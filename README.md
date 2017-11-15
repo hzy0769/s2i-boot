@@ -1,12 +1,12 @@
 # s2i-boot: OpenShift S2I Builder for SpringBoot
 
-Travis CI: image:https://travis-ci.org/linzhaoming/s2i-boot.svg?branch=master[Status, link=https://travis-ci.org/linzhaoming/s2i-boot]
+![Release](https://travis-ci.org/linzhaoming/s2i-boot.svg?branch=master)
 
 **s2i-boot**(Source-to-Image Builder) let's you create projects targeting SpringBoot Appliction, build with  Java OpenJDK 8 and maven
 
 **Tested** at Openshift `3.6.x` and `3.7.x`
 
-[QuickStart](docs/quickstart.md) 
+[QuickStart](docs/QuickStart.md) 
 
 ## BUILD ENV Options
 
@@ -22,17 +22,17 @@ Travis CI: image:https://travis-ci.org/linzhaoming/s2i-boot.svg?branch=master[St
 ## Defaults
 If you do not specify any BUILDER_ARGS, by default the s2i image will use the following:
 
-----
+```
 MAVEN_ARGS="package -DskipTests"
-----
+```
 
 ## Test in OpenShift
 
 * First load all the needed resources in a project.
 
-----
+```
 oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.json
-----
+```
 
 * Once the builder s2i-boot has been registered, you can create an app with:
 
