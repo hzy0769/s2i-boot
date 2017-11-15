@@ -1,0 +1,19 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+#  - make test
+  - make build
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push linzhaoming/s2i-boot:$DOCKER_TAG;
+    fi
+#  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+#    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+#    docker push linzhaoming/s2i-boot:latest;
+#    fi
+    fi

@@ -1,0 +1,9 @@
+#!/bin/sh
+set -ue
+# s2i 'save-artifacts' routine
+s2i_save_build_artifacts() {
+    cd ${HOME}
+    tar cf - .m2
+}
+
+s2i_save_build_artifacts
