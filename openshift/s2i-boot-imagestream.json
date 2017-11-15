@@ -7,7 +7,7 @@
    "spec": {
       "tags": [
          {
-            "name": "latest",
+            "name": "1.0.0",
             "annotations": {
                "description": "SpringBoot OpenJDK S2I image",
                "iconClass": "icon-jboss",
@@ -18,7 +18,7 @@
             },
             "from": {
                "kind": "DockerImage",
-               "name": "docker.io/linzhaoming/s2i-boot:latest"
+               "name": "docker.io/linzhaoming/s2i-boot:1.0.0"
             }
          }
       ]

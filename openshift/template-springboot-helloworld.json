@@ -109,7 +109,7 @@
           "sourceStrategy": {
             "from": {
               "kind": "ImageStreamTag",
-              "name": "s2i-boot:latest"
+              "name": "s2i-boot:1.0.0"
             },
             "env": [
               {
