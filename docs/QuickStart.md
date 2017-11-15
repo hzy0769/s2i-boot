@@ -13,7 +13,7 @@
 - Importing the template example
 
   ```
-  oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/template-springboot-helloworld.json
+  $ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/template-springboot-helloworld.json
 
   template "example-s2i-boot" created
   ```
