@@ -26,10 +26,9 @@ The image is available directly from [Docker Hub](https://hub.docker.com/r/linzh
 
 ## Defaults
 If you do not specify any BUILDER_ARGS, by default the s2i image will use the following:
-
-    ```
-    MAVEN_ARGS="package -DskipTests"
-    ```
+```
+MAVEN_ARGS="package -DskipTests"
+```
 
 ## Usage
 
@@ -47,8 +46,8 @@ If you do not specify any BUILDER_ARGS, by default the s2i image will use the fo
 
 * Once the builder s2i-boot has been registered, you can create an app with:
 
-** Instant app already provided as template
-** Using the s2i-boot builder image using a regular Git repository
+    * Instant app already provided as template
+    * Using the s2i-boot builder image using a regular Git repository
 
 ## Samples
 There is a lot of example SpringBoot applications [here](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples)
