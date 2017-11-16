@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  name: s2i-boot
+  annotations:
+    openshift.io/display-name: SpringBoot Image Builder (s2i-boot)
+    openshift.io/generated-by: Linzhaoming
+spec:
+  tags:
+  - name: latest
+    annotations:
+      openshift.io/display-name: s2i-boot (Latest)
+      openshift.io/provider-display-name: Linzhaoming
+      description: >-
+        s2i-boot (SpringBoot S2I Builder)
+        Building a SpringBoot Application with Maven
+      iconClass: icon-spring
+      sampleRepo: https://github.com/linzhaoming/springboot-helloworld.git
+      tags: builder,java,maven,springboot,microservices
+      supports: jee,java
+      version: latest
+    from:
+      kind: DockerImage
+      name: docker.io/linzhaoming/s2i-boot:latest
+  - name: 0.0.1
+    annotations:
+      openshift.io/display-name: s2i-boot (1.0.0)
+      openshift.io/provider-display-name: Linzhaoming
+      description: >-
+        s2i-boot (SpringBoot S2I Builder)
+        Building a SpringBoot Application with Maven
+      iconClass: icon-spring
+      sampleRepo: https://github.com/linzhaoming/springboot-helloworld.git
+      tags: builder,java,maven,springboot,microservices
+      supports: jee,java
+      version: 0.0.1
+    from:
+      kind: DockerImage
+      name: docker.io/linzhaoming/s2i-boot:0.0.1

@@ -1,10 +1,10 @@
 # s2i-boot: OpenShift S2I Builder for SpringBoot
 
-![Release](https://travis-ci.org/linzhaoming/s2i-boot.svg?branch=master)
+[![Build Status](https://travis-ci.org/linzhaoming/s2i-boot.svg?branch=master)](https://travis-ci.org/linzhaoming/s2i-boot)
 
-**s2i-boot**(Source-to-Image Builder) let's you create projects targeting SpringBoot Appliction, build with  Java OpenJDK 8 and maven
+**s2i-boot**(Source-to-Image Builder) let's you create projects targeting SpringBoot Appliction, build with Java OpenJDK 8 and maven
 
-**Tested** at Openshift `3.6.x` and `3.7.x`
+**Tested** at Openshift `3.6.x`
 
 [QuickStart](docs/QuickStart.md) 
 
@@ -17,7 +17,6 @@
 ## RUN ENV Options
 
 * *APP_OPTIONS*: Options to pass to *java -jar app.jar ${APP_OPTIONS}*
-
 
 ## Defaults
 If you do not specify any BUILDER_ARGS, by default the s2i image will use the following:
@@ -40,4 +39,4 @@ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/opens
 ** Using the s2i-boot builder image using a regular Git repository
 
 ## Samples
-There is a lot of example SpringBoot applications https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples[here]
+There is a lot of example SpringBoot applications [here](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples)
