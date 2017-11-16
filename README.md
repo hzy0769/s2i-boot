@@ -10,9 +10,7 @@ The image is available directly from [Docker Hub](https://hub.docker.com/r/linzh
 
 **s2i-boot**(Source-to-Image Builder) let's you create projects targeting SpringBoot Appliction, build with Java OpenJDK 8 and maven
 
-**Tested** at [Openshift](https://docs.openshift.org/) `3.6.x`
-
-[QuickStart](docs/QuickStart.md) 
+**Tested** at [Openshift](https://docs.openshift.org/) [`3.6.x`](docs/QuickStart.md), [`3.7.x`](docs/3.7/QuickStart-3.7.md)
 
 ## BUILD ENV Options
 
@@ -35,7 +33,7 @@ MAVEN_ARGS="package -DskipTests"
 * First load all the needed resources in a project.
 
     ```
-    oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.yml
+    $ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.yml
     ```
 
 * Importing the template example
