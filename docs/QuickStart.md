@@ -5,7 +5,7 @@
 - Importing the s2i-boot builder
 
   ```
-  $ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.json
+  $ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.yml
 
   imagestream "s2i-boot" created
   ```
@@ -13,7 +13,7 @@
 - Importing the template example
 
   ```
-  $ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/template-springboot-helloworld.json
+  $ oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/example-s2i-boot.yml
 
   template "example-s2i-boot" created
   ```
@@ -31,15 +31,15 @@ To create the objects from an uploaded template using the web console:
 
 2. Select a template from the list of templates in your project, or provided by the global template library:
 
-- Selectt **Java** Template
+Select **Java** Template
 
 ![Select](images/select.png)
 
-- Select **example-s2i-boot**
+Select **s2i-boot Example(SpringBoot)**
 
 ![SelectTemplate](images/selectTemplate.png)
 
-3. Modify template parameters in the template creation screen:
+3. Modify template parameters in the template creation screen if needed:
 
 ![New App](images/new-app.png)
 
@@ -53,15 +53,15 @@ Click  the  **Create** Button
 - Using the CLI to deploy the new app
 
 ```
-[root@centos-51 ~]# oc new-app example-s2i-boot
---> Deploying template "nemo/example-s2i-boot" to project nemo
+$ oc new-app example-s2i-boot
+--> Deploying template "myproject/example-s2i-boot" to project myproject
 
-     example-s2i-boot
+     s2i-boot Example (SpringBoot)
      ---------
      s2i-boot: Sample SpringBoot Application
 
      * With parameters:
-        * Application name=springboot-helloworld
+        * Application name=example-s2i-boot
         * Jar file suffix=
         * Maven Mirror URL=http://maven.aliyun.com/nexus/content/groups/public
         * Application hostname=
@@ -73,13 +73,14 @@ Click  the  **Create** Button
         * GENERIC_TRIGGER_SECRET=t8TTWiqG # generated
 
 --> Creating resources ...
-    buildconfig "springboot-helloworld" created
-    imagestream "springboot-helloworld" created
-    deploymentconfig "springboot-helloworld" created
-    route "springboot-helloworld" created
-    service "springboot-helloworld" created
+    buildconfig "example-s2i-boot" created
+    imagestream "example-s2i-boot" created
+    deploymentconfig "example-s2i-boot" created
+    route "example-s2i-boot" created
+    service "example-s2i-boot" created
 --> Success
     Build scheduled, use 'oc logs -f bc/springboot-helloworld' to track its progress.
+    Access your application via route 'example-s2i-boot-myproject.127.0.0.1.nip.io' 
     Run 'oc status' to view your app.
 ```
 
