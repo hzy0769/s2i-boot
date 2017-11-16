@@ -30,13 +30,15 @@ MAVEN_ARGS="package -DskipTests"
 * First load all the needed resources in a project.
 
 ```
-oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.json
+oc create -f https://raw.githubusercontent.com/linzhaoming/s2i-boot/master/openshift/s2i-boot-imagestream.yml
 ```
 
 * Once the builder s2i-boot has been registered, you can create an app with:
 
 ** Instant app already provided as template
 ** Using the s2i-boot builder image using a regular Git repository
+
+## Example
 
 ## Samples
 There is a lot of example SpringBoot applications [here](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples)
