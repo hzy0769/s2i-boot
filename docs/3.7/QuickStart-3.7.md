@@ -1,4 +1,4 @@
-# QuickStart
+# QuickStart-3.7
 
 ## Importing the s2i-boot Builder
 
@@ -28,17 +28,15 @@ To create the objects from an uploaded template using the web console:
 
 2. Select a template from the list of templates in your project, or provided by the global template library:
 
-Select **Java** Template
-
-![Select](images/select.png)
-
 Select **s2i-boot Example(SpringBoot)**
 
-![SelectTemplate](images/selectTemplate.png)
+![selectFromProject](images/selectFromProject.png)
+
+![selectFromProject2](images/selectFromProject2.png)
 
 3. Modify template parameters in the template creation screen if needed:
 
-![New App](images/new-app.png)
+![selectFromProject3](images/selectFromProject3.png)
 
 Click  the  **Create** Button 
 4. You should see the result like this
