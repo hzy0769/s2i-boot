@@ -26,7 +26,6 @@ To create the objects from an uploaded template using the web console:
 
 1. While in the desired project, click Add to Project:
 
-
 ![Add](images/addToProject.png)
 
 2. Select a template from the list of templates in your project, or provided by the global template library:
