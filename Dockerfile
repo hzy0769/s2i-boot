@@ -1,10 +1,10 @@
-# s2i-boot
+# linzhaoming/s2i-boot
 FROM openshift/base-centos7
 MAINTAINER Linzhaoming <teleyic@gmail.com>
 # HOME in base image is /opt/app-root/src
 
 # Install build tools on top of base image
-# Java jdk 8, Maven 3.3
+# Java jdk 8, Maven 3.5
 RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
     yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
@@ -14,15 +14,14 @@ RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
 
-ENV MAVEN_VERSION 3.3.9
+ENV MAVEN_VERSION 3.5.2
 RUN (curl -0 http://www.eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
 
-# TODO: no use-linzm
-ENV PATH=/opt/maven/bin/:/usr/local/s2i:$PATH
+ENV PATH=/usr/local/s2i:$PATH
 
 ENV BUILDER_VERSION 1.0
 
