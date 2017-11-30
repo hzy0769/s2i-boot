@@ -25,10 +25,15 @@ ENV PATH=/usr/local/s2i:$PATH
 
 ENV BUILDER_VERSION 1.0
 
+ARG BUILD_DATE
+
 LABEL io.k8s.description="s2i-boot: Building SpringBoot applications with maven" \
       io.k8s.display-name="sti-boot builder 1.0" \
       io.openshift.expose-services="8080:http" \
-      io.openshift.tags="builder,maven-3,java,microservices,springboot"
+      io.openshift.tags="builder,maven-3,java,microservices,springboot" \
+      vendor="Linzhaoming" \
+      name="S2I Boot Builder" \
+      build-date="${BUILD_DATE}"
 
 # COPY  setting.xml
 COPY ./contrib/settings.xml $HOME/.m2/
