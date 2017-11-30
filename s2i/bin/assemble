@@ -83,10 +83,13 @@ fi
 if [ -d $LOCAL_SOURCE_DIR/configuration ]; then
   echo "Copying config files from project..."
 
-  if [ -f $LOCAL_SOURCE_DIR/configuration/settings.xml ]; then
+  if [ -f $LOCAL_SOURCE_DIR/configuration/settings.xml ] && [ -n "$ENABLE_NEST_SETTINGS" ] ; then
+    echo "Using setting.xml of the project"
     mkdir -p $HOME/.m2
     mv $LOCAL_SOURCE_DIR/configuration/settings.xml $HOME/.m2
   fi
+
+  echo "linzhaoming test"
 
   # We move the rest of the configuration, if provided to the place where the app will run
   cp -v $LOCAL_SOURCE_DIR/configuration/* $DEPLOY_DIR
@@ -144,13 +147,18 @@ fi
 # As Microservices you should only have 1 fat jar
 # if compgen -G "/tmp/src/*" >/dev/null; then
 # TODO: Review how best move these
-if [ $(ls ${DEPLOY_DIR}/*${APP_SUFFIX}.jar | wc -l) -eq 1 ]; then
+RUN_JAR_COUNT=$(ls ${DEPLOY_DIR}/*${APP_SUFFIX}.jar | wc -l)
+
+if [ ${RUN_JAR_COUNT} -eq 1 ]; then
   echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
   cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
   [ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
   echo "[INFO] Application jar file is located in ${DEPLOY_DIR}/app.jar"
+elif [ ${RUN_JAR_COUNT} -eq 0 ]; then
+ echo "[ERROR] No app.jar file located in ${DEPLOY_DIR}, APP_SUFFIX is ${APP_SUFFIX}"
+ exit 1
 else
-  echo "[ERROR] No app.jar file located in ${DEPLOY_DIR}"
+  echo "[ERROR] Found multiple jar files. APP_SUFFIX is ${APP_SUFFIX}"
   exit 1
 fi
 
