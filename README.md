@@ -17,6 +17,8 @@ The image is available directly from [Docker Hub](https://hub.docker.com/r/linzh
 * *APP_SUFFIX*: Jar file suffix to use to locate the generated artifact to use (e.g. xxxxx${APP_SUFFIX}.jar)
 * *BUILDER_ARGS*: Allows you to specify options to pass to maven
 * *MAVEN_MIRROR_URL*: Maven mirror url
+* *ARTIFACT_DIR*: How the locate the Running Artifact. Default value is "target".
+* *ENABLE_NEST_SETTINGS*: Enable the s2i builder reading the proejct's configuration/settings.xml. Default is empty, Disable
 
 ## RUN ENV Options
 
