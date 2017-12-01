@@ -119,7 +119,17 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   echo "Using $(mvn --version)"
 
   # Execute the actual build
-  mvn $MAVEN_ARGS
+  if [ -n $ENABLE_RELEAE ] ; then
+    # Release version, Will ignore the test
+    mvn -DskipTests deploy
+  else
+    mvn $MAVEN_ARGS;
+  fi
+
+  # Release version, Will ignore the sonar
+  if [ -z "$ENABLE_RELEAE" ] && [ -n "$ENABLE_SONAR_PATH" ] && [ -n "$ENABLE_NEST_SETTINGS" ] ; then
+    mvn -f $ENABLE_SONAR_PATH sonar:sonar
+  fi
 
   ERR=$?
   if [ $ERR -ne 0 ]; then
