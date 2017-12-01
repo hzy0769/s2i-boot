@@ -17,8 +17,12 @@ The image is available directly from [Docker Hub](https://hub.docker.com/r/linzh
 * *APP_SUFFIX*: Jar file suffix to use to locate the generated artifact to use (e.g. xxxxx${APP_SUFFIX}.jar)
 * *BUILDER_ARGS*: Allows you to specify options to pass to maven
 * *MAVEN_MIRROR_URL*: Maven mirror url
-* *ARTIFACT_DIR*: How the locate the Running Artifact. Default value is "target".
-* *ENABLE_NEST_SETTINGS*: Enable the s2i builder reading the proejct's configuration/settings.xml. Default is empty, Disable
+* *ARTIFACT_DIR*: How the locate the Running Artifact. Default is "target".
+* *ENABLE_NEST_SETTINGS*: Enable the s2i builder reading the proejct's configuration/settings.xml. Default is empty, **disable**.
+* *MAVEN_ARGS*: The maven args. Default is `-e -DskipTests package`
+* *ENABLE_SONAR_PATH*: Call `mvn -f ${ENABLE_SONAR_PATH} sonar:sonar` after build.  Default is empty, **disable**. When enable, must settings `$NABLE_NEST_SETTINGS`
+* *ENABLE_RELEAE*: Call `mvn -f deploy`, Ignore the *MAVEN_ARGS* and ENABLE_SONAR_PATH*.
+
 
 ## RUN ENV Options
 
