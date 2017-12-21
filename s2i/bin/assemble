@@ -89,8 +89,6 @@ if [ -d $LOCAL_SOURCE_DIR/configuration ]; then
     mv $LOCAL_SOURCE_DIR/configuration/settings.xml $HOME/.m2
   fi
 
-  echo "linzhaoming test"
-
   # We move the rest of the configuration, if provided to the place where the app will run
   cp -v $LOCAL_SOURCE_DIR/configuration/* $DEPLOY_DIR
 fi
@@ -121,8 +119,10 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   # Execute the actual build
   if [ -n $ENABLE_RELEASE ] ; then
     # Release version, Will ignore the test
+    echo "Using mvn -DskipTests deploy"
     mvn -DskipTests deploy
   else
+    echo "Using mvn $MAVEN_ARGS"
     mvn $MAVEN_ARGS;
   fi
 
