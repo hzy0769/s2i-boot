@@ -21,7 +21,7 @@ The image is available directly from [Docker Hub](https://hub.docker.com/r/linzh
 * *ENABLE_NEST_SETTINGS*: Enable the s2i builder reading the proejct's configuration/settings.xml. Default is empty, **disable**.
 * *MAVEN_ARGS*: The maven args. Default is `-e -DskipTests package`
 * *ENABLE_SONAR_PATH*: Call `mvn -f ${ENABLE_SONAR_PATH} sonar:sonar` after build.  Default is empty, **disable**. When enable, must settings `$NABLE_NEST_SETTINGS`
-* *ENABLE_RELEAE*: Call `mvn deploy`, Ignore the *MAVEN_ARGS* and ENABLE_SONAR_PATH*.
+* *ENABLE_RELEASE*: Call `mvn deploy`, Ignore the *MAVEN_ARGS* and ENABLE_SONAR_PATH*.
 
 
 ## RUN ENV Options
