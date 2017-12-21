@@ -23,7 +23,6 @@ The image is available directly from [Docker Hub](https://hub.docker.com/r/linzh
 * *ENABLE_SONAR_PATH*: Call `mvn -f ${ENABLE_SONAR_PATH} sonar:sonar` after build.  Default is empty, **disable**. When enable, must settings `$NABLE_NEST_SETTINGS`
 * *ENABLE_RELEASE*: Call `mvn deploy`, Ignore the *MAVEN_ARGS* and ENABLE_SONAR_PATH*.
 
-
 ## RUN ENV Options
 
 * *APP_OPTIONS*: Options to pass to *java -jar app.jar ${APP_OPTIONS}*
