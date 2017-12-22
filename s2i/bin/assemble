@@ -117,7 +117,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   echo "Using $(mvn --version)"
 
   # Execute the actual build
-  if [ -n $ENABLE_RELEASE ] ; then
+  if [ -n "$ENABLE_RELEASE" ] ; then
     # Release version, Will ignore the test
     echo "Using mvn -DskipTests deploy"
     mvn -DskipTests deploy
