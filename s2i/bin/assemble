@@ -83,10 +83,12 @@ fi
 if [ -d $LOCAL_SOURCE_DIR/configuration ]; then
   echo "Copying config files from project..."
 
-  if [ -f $LOCAL_SOURCE_DIR/configuration/settings.xml ] && [ -n "$ENABLE_NEST_SETTINGS" ] ; then
+  if [ -f $LOCAL_SOURCE_DIR/configuration/settings.xml ] && [ "$ENABLE_NEST_SETTINGS" = "true" ] ; then
     echo "Using setting.xml of the project"
     mkdir -p $HOME/.m2
     mv $LOCAL_SOURCE_DIR/configuration/settings.xml $HOME/.m2
+   else
+    echo "Using default setting.xml"
   fi
 
   # We move the rest of the configuration, if provided to the place where the app will run
@@ -127,7 +129,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   fi
 
   # Release version, Will ignore the sonar
-  if [ -z "$ENABLE_RELEASE" ] && [ -n "$ENABLE_SONAR_PATH" ] && [ -n "$ENABLE_NEST_SETTINGS" ] ; then
+  if [ -z "$ENABLE_RELEASE" ] && [ -n "$ENABLE_SONAR_PATH" ] && [ "$ENABLE_NEST_SETTINGS" = "true" ] ; then
     mvn -f $ENABLE_SONAR_PATH sonar:sonar
   fi
 
