@@ -62,7 +62,7 @@ clear_maven_repository() {
 # functions end
 
 
-#HOME=/opt/app-root/src
+HOME=/root
 
 # we will move any code provided by s2i to here
 LOCAL_SOURCE_DIR=${HOME}/source

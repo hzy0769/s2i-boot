@@ -2,6 +2,7 @@
 FROM swr.cn-south-1.myhuaweicloud.com/dgdatav/java8-ubuntu:8u212
 MAINTAINER hzy <hzy0769@qq.com>
 # HOME in base image is /root
+ENV HOME=/root
 
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && \
