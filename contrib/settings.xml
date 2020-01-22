@@ -5,12 +5,6 @@
 
     <mirrors>
         <!-- ### configured mirrors ### -->
-		<mirror>
-			<id>nexus</id>
-			<mirrorOf>central</mirrorOf>
-			<name>internal nexus repository</name>
-			<url>https://nexus.alltosea.com/repository/maven-public/</url>
-		</mirror>
     </mirrors>
 
     <proxies>
