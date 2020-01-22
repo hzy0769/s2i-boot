@@ -62,12 +62,12 @@ clear_maven_repository() {
 # functions end
 
 echo "HOME=${HOME}"
-HOME=
+HOME=/opt/app-root/src
 echo "HOME=${HOME}"
-echo "ls /root/.m2"
-ls /root/.m2
 echo "ls /.m2"
-ls /.m2
+ls -lrt /.m2
+echo "ls /opt/app-root/src/.m2"
+ls -lrt /opt/app-root/src/.m2
 
 # we will move any code provided by s2i to here
 LOCAL_SOURCE_DIR=$HOME/source

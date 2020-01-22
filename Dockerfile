@@ -1,15 +1,26 @@
 # hzy/s2i-boot
 FROM swr.cn-south-1.myhuaweicloud.com/dgdatav/java8-ubuntu:8u212
 MAINTAINER hzy <hzy0769@qq.com>
-# HOME in base image is /root
-#ENV HOME=/root
+# HOME in base image is /opt/app-root/src
+
+ENV STI_SCRIPTS_URL=image:///usr/libexec/s2i \
+    STI_SCRIPTS_PATH=/usr/libexec/s2i \
+	HOME=/opt/app-root/src \
+	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+ENV BASH_ENV=/opt/app-root/etc/scl_enable \
+	ENV=/opt/app-root/etc/scl_enable \
+	PROMPT_COMMAND=. /opt/app-root/etc/scl_enable
+
+RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin       -c "Default Application User" default &&   chown -R 1001:0 /opt/app-root
+
+WORKDIR /opt/app-root/src
 
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && \
     mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
-    mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src && \
-	mkdir -p /source && chmod -R a+rwX /source
+    mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
 
 ENV MAVEN_VERSION 3.6.3
 ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
@@ -29,7 +40,9 @@ LABEL io.k8s.description="s2i-boot: Building SpringBoot applications with maven"
       io.openshift.tags="builder,maven-3,java,microservices,springboot" \
       vendor="Linzhaoming" \
       name="S2I Boot Builder" \
-      build-date="${BUILD_DATE}"
+      build-date="${BUILD_DATE}" \
+	  io.openshift.s2i.scripts-url=image:///usr/libexec/s2i \
+	  io.s2i.scripts-url=image:///usr/libexec/s2i
 
 # COPY  setting.xml
 COPY ./contrib/settings.xml $HOME/.m2/
