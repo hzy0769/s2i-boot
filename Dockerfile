@@ -1,20 +1,16 @@
-# linzhaoming/s2i-boot
-FROM openshift/base-centos7
-MAINTAINER Linzhaoming <teleyic@gmail.com>
+# hzy/s2i-boot
+FROM swr.cn-south-1.myhuaweicloud.com/dgdatav/java8-ubuntu:8u212
+MAINTAINER hzy <hzy0769@qq.com>
 # HOME in base image is /opt/app-root/src
+ENV HOME=/opt/app-root/src
 
 # Install build tools on top of base image
-# Java jdk 8, Maven 3.5
-RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
-    yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
-    rpm -V $INSTALL_PKGS && \
-    yum clean all -y && \
-    mkdir -p /opt/openshift && \
+RUN mkdir -p /opt/openshift && \
     mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
 
-ENV MAVEN_VERSION 3.5.2
+ENV MAVEN_VERSION 3.6.3
 RUN (curl -0 http://www.eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
