@@ -2,14 +2,14 @@
 FROM swr.cn-south-1.myhuaweicloud.com/dgdatav/java8-ubuntu:8u212
 MAINTAINER hzy <hzy0769@qq.com>
 # HOME in base image is /root
-ENV HOME=/root
+#ENV HOME=/root
 
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && \
     mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src && \
-	mkdir -p /root/source && chmod -R a+rwX /root/source
+	mkdir -p /root/source && chmod -R a+rwX /root
 
 ENV MAVEN_VERSION 3.6.3
 ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
