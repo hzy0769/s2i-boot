@@ -9,7 +9,7 @@ RUN mkdir -p /opt/openshift && \
     mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src && \
-	mkdir -p /root/source && chmod -R a+rwX /root
+	mkdir -p /source && chmod -R a+rwX /source
 
 ENV MAVEN_VERSION 3.6.3
 ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
