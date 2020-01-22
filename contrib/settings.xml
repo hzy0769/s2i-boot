@@ -4,13 +4,13 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
     <mirrors>
+        <!-- ### configured mirrors ### -->
 		<mirror>
 			<id>nexus</id>
 			<mirrorOf>central</mirrorOf>
 			<name>internal nexus repository</name>
 			<url>https://nexus.alltosea.com/repository/maven-public/</url>
 		</mirror>
-        <!-- ### configured mirrors ### -->
     </mirrors>
 
     <proxies>

@@ -1,8 +1,7 @@
 # hzy/s2i-boot
 FROM swr.cn-south-1.myhuaweicloud.com/dgdatav/java8-ubuntu:8u212
 MAINTAINER hzy <hzy0769@qq.com>
-# HOME in base image is /opt/app-root/src
-ENV HOME=/opt/app-root/src
+# HOME in base image is /root
 
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && \
@@ -11,9 +10,8 @@ RUN mkdir -p /opt/openshift && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
 
 ENV MAVEN_VERSION 3.6.3
-RUN (curl -0 http://www.eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
-    tar -zx -C /usr/local) && \
-    mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
+ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
+RUN mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
 
