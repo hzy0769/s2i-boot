@@ -8,8 +8,6 @@ ENV STI_SCRIPTS_URL=image:///usr/libexec/s2i \
 	HOME=/opt/app-root/src \
 	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-ENV BASH_ENV=/opt/app-root/etc/scl_enable \
-	PROMPT_COMMAND=. /opt/app-root/etc/scl_enable
 
 RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin       -c "Default Application User" default &&   chown -R 1001:0 /opt/app-root
 
