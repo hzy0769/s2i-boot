@@ -6,7 +6,7 @@ MAINTAINER hzy <hzy0769@qq.com>
 ENV STI_SCRIPTS_URL=image:///usr/libexec/s2i \
     STI_SCRIPTS_PATH=/usr/libexec/s2i \
 	HOME=/opt/app-root/src \
-	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+	PATH=/opt/app-root/src/bin:/opt/app-root/bin:$PATH
 
 
 RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin       -c "Default Application User" default && \

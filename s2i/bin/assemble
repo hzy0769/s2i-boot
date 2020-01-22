@@ -68,6 +68,7 @@ echo "ls /.m2"
 ls -lrt /.m2
 echo "ls /opt/app-root/src/.m2"
 ls -lrt /opt/app-root/src/.m2
+echo "PATH=${PATH}"
 
 # we will move any code provided by s2i to here
 LOCAL_SOURCE_DIR=$HOME/source
