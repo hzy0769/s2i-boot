@@ -9,7 +9,8 @@ ENV STI_SCRIPTS_URL=image:///usr/libexec/s2i \
 	PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 
-RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin       -c "Default Application User" default &&   chown -R 1001:0 /opt/app-root
+RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin       -c "Default Application User" default && \
+	mkdir -p /opt/app-root && chown -R 1001:0 /opt/app-root
 
 WORKDIR /opt/app-root/src
 
