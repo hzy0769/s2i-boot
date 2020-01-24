@@ -36,7 +36,8 @@ USER 1000
 RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
     mkdir -p /opt/app-root/source  && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
-    mkdir -p /opt/app-root/src && chmod -R 777 /opt/app-root
+    mkdir -p /opt/app-root/src && chmod -R 777 /opt/app-root && \
+	chmod -R 777 /opt
 
 # Set the default port for applications built using this image
 EXPOSE 8080
