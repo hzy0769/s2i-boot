@@ -170,10 +170,11 @@ fi
 RUN_JAR_COUNT=$(ls ${DEPLOY_DIR}/*${APP_SUFFIX}.jar | wc -l)
 
 if [ ${RUN_JAR_COUNT} -eq 1 ]; then
-  echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
+  echo "[INFO] Boot-JAR=${DEPLOY_DIR}/*${APP_SUFFIX}.jar"
+  #echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
   #cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
-  [ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
-  echo "[INFO] Application jar file is located in ${DEPLOY_DIR}/app.jar"
+  #[ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
+  #echo "[INFO] Application jar file is located in ${DEPLOY_DIR}/app.jar"
 elif [ ${RUN_JAR_COUNT} -eq 0 ]; then
  echo "[ERROR] No app.jar file located in ${DEPLOY_DIR}, APP_SUFFIX is ${APP_SUFFIX}"
  exit 1

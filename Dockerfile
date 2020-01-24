@@ -9,8 +9,7 @@ ENV MAVEN_HOME /usr/local/maven
 RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
     mkdir -p /opt/app-root && chmod -R a+rwX /opt/app-root && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
-    chmod -R 777 /opt/app-root && \
-	chmod -R 777 /opt
+    chmod -R 777 /opt/app-root
 
 ENV MAVEN_VERSION 3.6.3
 ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
