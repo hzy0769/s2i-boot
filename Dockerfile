@@ -36,7 +36,7 @@ LABEL io.k8s.description="s2i-boot: Building SpringBoot applications with maven"
 LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
 COPY ./s2i/bin/ /usr/local/s2i
 
-USER default
+USER 1000
 
 # Set the default port for applications built using this image
 EXPOSE 8080
