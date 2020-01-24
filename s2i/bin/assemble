@@ -63,12 +63,10 @@ clear_maven_repository() {
 
 echo "HOME=${HOME}"
 echo "MAVEN_HOME=${MAVEN_HOME}"
-echo "ls ${HOME}/.m2"
-ls -lrt ${HOME}/.m2
+#echo "ls /.m2"
+#ls -lrt /.m2
 #HOME=/opt/app-root/src
-MAVEN_HOME=/usr/local/maven
-#echo "HOME=${HOME}"
-echo "MAVEN_HOME=${MAVEN_HOME}"
+
 
 
 
@@ -153,6 +151,8 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
 
   # optionally clear the local maven repository after the build
   clear_maven_repository
+  #清理所有源码
+  rm -rf /opt/app-root/source
 
   popd &> /dev/null
 else
@@ -171,7 +171,7 @@ RUN_JAR_COUNT=$(ls ${DEPLOY_DIR}/*${APP_SUFFIX}.jar | wc -l)
 
 if [ ${RUN_JAR_COUNT} -eq 1 ]; then
   echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
-  cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
+  #cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
   [ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
   echo "[INFO] Application jar file is located in ${DEPLOY_DIR}/app.jar"
 elif [ ${RUN_JAR_COUNT} -eq 0 ]; then
