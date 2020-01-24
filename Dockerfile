@@ -8,8 +8,7 @@ ENV MAVEN_HOME /usr/local/maven
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
     mkdir -p /opt/app-root && chmod -R a+rwX /opt/app-root && \
-    mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
-    chmod -R 777 /opt/app-root
+    mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination 
 
 ENV MAVEN_VERSION 3.6.3
 ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
