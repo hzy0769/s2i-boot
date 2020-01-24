@@ -7,7 +7,7 @@ ENV MAVEN_HOME /usr/local/maven
 
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
-    mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
+    mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
 
