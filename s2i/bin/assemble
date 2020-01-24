@@ -154,7 +154,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   #清理所有源码
   #rm -rf /opt/app-root/source/?/.m2
   rm -rf /opt/app-root/source/src
-  rm -rf /opt/app-root/source/target
+  #rm -rf /opt/app-root/source/target
 
   popd &> /dev/null
 else
