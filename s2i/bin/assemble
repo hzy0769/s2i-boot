@@ -10,7 +10,7 @@ function configure_mirrors() {
       <url>$MAVEN_MIRROR_URL</url>\
       <mirrorOf>external:*</mirrorOf>\
     </mirror>"
-    sed -i "s|<!-- ### configured mirrors ### -->|$xml|" $HOME/.m2/settings.xml
+    sed -i "s|<!-- ### configured mirrors ### -->|$xml|" $MAVEN_HOME/conf/settings.xml
   fi
 }
 
@@ -62,16 +62,18 @@ clear_maven_repository() {
 # functions end
 
 echo "HOME=${HOME}"
-HOME=/opt/app-root/src
-echo "HOME=${HOME}"
-echo "ls /.m2"
-ls -lrt /.m2
-echo "ls /opt/app-root/src/.m2"
-ls -lrt /opt/app-root/src/.m2
-echo "PATH=${PATH}"
+echo "MAVEN_HOME=${MAVEN_HOME}"
+echo "ls ${HOME}/.m2"
+ls -lrt ${HOME}/.m2
+#HOME=/opt/app-root/src
+MAVEN_HOME=/usr/local/maven
+#echo "HOME=${HOME}"
+echo "MAVEN_HOME=${MAVEN_HOME}"
+
+
 
 # we will move any code provided by s2i to here
-LOCAL_SOURCE_DIR=$HOME/source
+LOCAL_SOURCE_DIR=/opt/app-root/source
 mkdir -p $LOCAL_SOURCE_DIR
 # TODO: Verify a $HOME is set
 

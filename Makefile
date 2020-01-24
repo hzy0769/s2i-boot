@@ -1,4 +1,4 @@
-IMAGE_NAME = springboot/s2i-boot
+IMAGE_NAME = hzy0769/s2i-springboot
 CURRENT_DATE = $(shell date +'%Y%m%d')
 # CURRENT_DATE=`date +'%y.%m.%d %H:%M:%S'`
 
