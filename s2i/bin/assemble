@@ -152,9 +152,9 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   # optionally clear the local maven repository after the build
   clear_maven_repository
   #清理所有源码
-  rm -rf /opt/app-root/source/?/.m2/repository/*
-  rm -rf /opt/app-root/source/src/*
-  rm -rf /opt/app-root/source/target/*
+  #rm -rf /opt/app-root/source/?/.m2/repository/*
+  #rm -rf /opt/app-root/source/src/*
+  #rm -rf /opt/app-root/source/target/*
 
   popd &> /dev/null
 else
