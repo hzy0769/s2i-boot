@@ -7,9 +7,9 @@ ENV MAVEN_HOME /usr/local/maven
 
 # Install build tools on top of base image
 RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
-    mkdir -p /opt/app-root/source  && \
+    mkdir -p /opt/app-root && chmod -R a+rwX /opt/app-root && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
-    mkdir -p /opt/app-root/src && chmod -R 777 /opt/app-root && \
+    chmod -R 777 /opt/app-root && \
 	chmod -R 777 /opt
 
 ENV MAVEN_VERSION 3.6.3
@@ -38,8 +38,6 @@ LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
 COPY ./s2i/bin/ /usr/local/s2i
 
 USER 1000
-
-RUN chmod -R 777 /opt/app-root
 
 # Set the default port for applications built using this image
 EXPOSE 8080
