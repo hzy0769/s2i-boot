@@ -5,12 +5,6 @@ MAINTAINER hzy <hzy0769@qq.com>
 
 ENV MAVEN_HOME /usr/local/maven
 
-# Install build tools on top of base image
-RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
-    mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root && \
-    mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
-    mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
-
 ENV MAVEN_VERSION 3.6.3
 ADD apache-maven-$MAVEN_VERSION-bin.tar.gz /usr/local/
 RUN mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
@@ -38,7 +32,11 @@ COPY ./s2i/bin/ /usr/local/s2i
 
 USER 1000
 
-RUN chown 1000:1000 /opt/app-root && chmod -R 777 /opt/app-root
+# Install build tools on top of base image
+RUN mkdir -p /opt/openshift && chmod -R a+rwX /opt/openshift && \
+    mkdir -p /opt/app-root/source  && \
+    mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
+    mkdir -p /opt/app-root/src && chmod -R 777 /opt/app-root
 
 # Set the default port for applications built using this image
 EXPOSE 8080
