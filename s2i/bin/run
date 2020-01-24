@@ -11,4 +11,4 @@ java -version
 #echo 'java -Djava.security.egd=file:/dev/./urandom ${JAVA_OPTIONS} -jar /opt/openshift/app.jar ${APP_OPTIONS}'
 
 cd /opt/openshift 
-java -Djava.security.egd=file:/dev/./urandom $JAVA_OPTIONS -jar /opt/openshift/app.jar $APP_OPTIONS
+java -Djava.security.egd=file:/dev/./urandom $JAVA_OPTIONS -jar /opt/openshift/${APP_SUFFIX}.jar $APP_OPTIONS
