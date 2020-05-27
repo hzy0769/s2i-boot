@@ -61,15 +61,11 @@ clear_maven_repository() {
 
 # functions end
 
-echo "HOME=${HOME}"
+
 HOME=/opt/app-root/src
-echo "HOME=${HOME}"
-echo "ls /opt/app-root/src/.m2"
-ls -lrt /opt/app-root/src/.m2
-echo "PATH=${PATH}"
 
 # we will move any code provided by s2i to here
-LOCAL_SOURCE_DIR=$HOME/source
+LOCAL_SOURCE_DIR=${HOME}/source
 mkdir -p $LOCAL_SOURCE_DIR
 # TODO: Verify a $HOME is set
 
@@ -95,7 +91,7 @@ if [ -d $LOCAL_SOURCE_DIR/configuration ]; then
     echo "Using default setting.xml"
   fi
 
-  # We move the rest of the configuration, if provided to the place where the app will run
+  # We move the rest of the configuration, if provided to the place where the app will run
   cp -v $LOCAL_SOURCE_DIR/configuration/* $DEPLOY_DIR
 fi
 
@@ -117,7 +113,7 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
   # Always force IPv4 (CLOUD-188)
   # Append user-supplied arguments (CLOUD-412)
   MAVEN_ARGS="$MAVEN_ARGS -Djava.net.preferIPv4Stack=true ${MAVEN_ARGS_APPEND}"
-  echo "HOME=${HOME}"
+
   echo "Found pom.xml... attempting to build with 'mvn ${MAVEN_ARGS}'"
 
   echo "Using $(mvn --version)"
@@ -170,15 +166,15 @@ RUN_JAR_COUNT=$(ls ${DEPLOY_DIR}/*${APP_SUFFIX}.jar | wc -l)
 
 if [ ${RUN_JAR_COUNT} -eq 1 ]; then
   echo "[INFO] Boot-JAR=${DEPLOY_DIR}/${APP_SUFFIX}.jar"
-  #echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
-  #cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
-  #[ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
-  #echo "[INFO] Application jar file is located in ${DEPLOY_DIR}/app.jar"
+ # echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
+ # cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
+ # [ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
+ # echo "[INFO] Application jar file is located in ${DEPLOY_DIR}/app.jar"
 elif [ ${RUN_JAR_COUNT} -eq 0 ]; then
- echo "[ERROR] No app.jar file located in ${DEPLOY_DIR}, APP_SUFFIX is ${APP_SUFFIX}"
+ echo "[ERROR] No app.jar file located in ${DEPLOY_DIR}, APP_SUFFIX is ${APP_SUFFIX}"
  exit 1
 else
-  echo "[ERROR] Found multiple jar files. APP_SUFFIX is ${APP_SUFFIX}"
+  echo "[ERROR] Found multiple jar files. APP_SUFFIX is ${APP_SUFFIX}"
   exit 1
 fi
 

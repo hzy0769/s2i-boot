@@ -1,21 +1,14 @@
-# hzy/s2i-boot
-FROM swr.cn-south-1.myhuaweicloud.com/dgdatav/java8-ubuntu:8u212
-MAINTAINER hzy <hzy0769@qq.com>
-# HOME in base image is /opt/app-root/src
-
-ENV STI_SCRIPTS_URL=image:///usr/libexec/s2i \
-    STI_SCRIPTS_PATH=/usr/libexec/s2i \
-	HOME=/opt/app-root/src \
-	PATH=/opt/app-root/src/bin:/opt/app-root/bin:$PATH
-
-
-RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin       -c "Default Application User" default && \
-	mkdir -p /opt/app-root && chown -R 1001:0 /opt/app-root
-
-WORKDIR /opt/app-root/src
+FROM openshift/base-centos7
+MAINTAINER Linzhaoming <teleyic@gmail.com>
+# HOME in base image is /opt/app-root/src
 
 # Install build tools on top of base image
-RUN mkdir -p /opt/openshift && \
+# Java jdk 8, Maven 3.6
+RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
+    yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    yum clean all -y && \
+    mkdir -p /opt/openshift && \
     mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src
@@ -38,9 +31,7 @@ LABEL io.k8s.description="s2i-boot: Building SpringBoot applications with maven"
       io.openshift.tags="builder,maven-3,java,microservices,springboot" \
       vendor="Linzhaoming" \
       name="S2I Boot Builder" \
-      build-date="${BUILD_DATE}" \
-	  io.openshift.s2i.scripts-url=image:///usr/libexec/s2i \
-	  io.s2i.scripts-url=image:///usr/libexec/s2i
+      build-date="${BUILD_DATE}"
 
 # COPY  setting.xml
 COPY ./contrib/settings.xml $HOME/.m2/
