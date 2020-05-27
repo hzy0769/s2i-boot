@@ -64,8 +64,6 @@ clear_maven_repository() {
 echo "HOME=${HOME}"
 HOME=/opt/app-root/src
 echo "HOME=${HOME}"
-echo "ls /.m2"
-ls -lrt /.m2
 echo "ls /opt/app-root/src/.m2"
 ls -lrt /opt/app-root/src/.m2
 echo "PATH=${PATH}"
@@ -171,6 +169,7 @@ fi
 RUN_JAR_COUNT=$(ls ${DEPLOY_DIR}/*${APP_SUFFIX}.jar | wc -l)
 
 if [ ${RUN_JAR_COUNT} -eq 1 ]; then
+  echo "[INFO] Boot-JAR=${DEPLOY_DIR}/${APP_SUFFIX}.jar"
   #echo "[INFO] Copying ${DEPLOY_DIR}/*${APP_SUFFIX}.jar into ${DEPLOY_DIR}/app.jar"
   #cp ${DEPLOY_DIR}/*${APP_SUFFIX}.jar ${DEPLOY_DIR}/app.jar
   #[ ! -f ${DEPLOY_DIR}/app.jar ] && echo "Application could not be properly built." && exit 1
