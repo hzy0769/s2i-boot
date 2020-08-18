@@ -41,6 +41,11 @@ COPY ./s2i/bin/ /usr/local/s2i
 
 RUN chown -R 1001:1001 /opt/openshift
 
+RUN chown -R 1001:1001 /opt
+RUN chown -R 1001:1001 /etc
+RUN chmod -R a+rw /opt
+RUN chmod -R a+rw /etc
+
 # This default user is created in the openshift/base-centos7 image
 USER 1001
 

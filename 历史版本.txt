@@ -1,0 +1,3 @@
+hzy0769/s2i-springboot:20200124231506
+
+hzy0769/s2i-springboot:3.0
