@@ -1,4 +1,4 @@
-FROM openshift/base-centos7
+FROM harbor.alltosea.com:88/java/java8:dbcp_baseimg
 MAINTAINER Linzhaoming <teleyic@gmail.com>
 # HOME in base image is /opt/app-root/src
 
